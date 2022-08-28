@@ -1,4 +1,4 @@
-import { getAccessToken, getWeather, getCIBA, getBirthdayMessage, sendMessage, getColor } from './src/services/index.js'
+import { getAccessToken, getWeather, getCIBA, sendMessage, getColor } from './src/services/index.js'
 import { config } from './config/index.js'
 import dayjs from 'dayjs'
 import { toLowerLine } from './src/utils/index.js'
@@ -28,10 +28,10 @@ const main = async () => {
     const { content: noteEn, note: noteCh} = await getCIBA()
     // 获取在一起的日期差
     const loveDay = dayjs().diff(dayjs(config.loveDate), 'day')
-    // 获取结婚的日期差
+    // 获取上次见面的时间差
     const marryDay = dayjs().diff(dayjs(config.marryDate), 'day')
     // 获取生日信息
-    const birthdayMessage = getBirthdayMessage()
+    //const birthdayMessage = getBirthdayMessage()
 
 
     // 集成所需信息
@@ -47,7 +47,7 @@ const main = async () => {
         { name: toLowerLine('windScale'), value: windScale, color: getColor() },
         { name: toLowerLine('loveDay'), value: loveDay, color: getColor() },
         { name: toLowerLine('marryDay'), value: marryDay, color: getColor() },
-        { name: toLowerLine('birthdayMessage'), value: birthdayMessage, color: getColor() },
+        //{ name: toLowerLine('birthdayMessage'), value: birthdayMessage, color: getColor() },
         { name: toLowerLine('noteEn'), value: noteEn, color: getColor() },
         { name: toLowerLine('noteCh'), value: noteCh, color: getColor() },
     ]
