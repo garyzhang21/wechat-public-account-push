@@ -43,15 +43,17 @@ import dayjs from 'dayjs'
     }
     const address = cityInfo[province][city]["AREAID"]
 
-    const url = `http://d1.weather.com.cn/dingzhi/${address}.html?_=${new Date()}` 
-
+    const url = `http://d1.weather.com.cn/dingzhi/${address}.html?_=${new Date().toLocaleString()}` 
+    //moment().format('YYYY-MM-DD HH:mm:ss')
+    //const url = `http://d1.weather.com.cn/dingzhi/${address}.html?_=${moment().format('YYYY-MM-DD HH:mm:ss')}` 
+    console.log(`222222`,url)
     const res = await axios.get(url, {
         headers: {
             "Referer": `http://www.weather.com.cn/weather1d/${address}.shtml`,
             'User-Agent': `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36`
         }
     }).catch(err => err)
-
+    console.log(`333333`,res)
     try {
         if (res.status === 200 && res.data) {
             const temp = res.data.split(";")[0].split("=")
